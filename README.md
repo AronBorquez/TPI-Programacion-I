@@ -64,13 +64,6 @@ python TPI_Programacion.py
 ## Estructura del proyecto
 
 
-PaisPedia/
-│
-├── TPI_Programacion.py
-├── Paises.csv
-├── README.md
-└── Documentacion.pdf
-
 
 ## Ejemplo de uso
 
@@ -135,5 +128,4 @@ En caso de producirse un error de ingreso, el sistema muestra un mensaje descrip
 
 ## Repositorio
 
-https://github.com/USUARIO/PaisPedia
-
+https://github.com/AronBorquez/TPI-Programacion-I

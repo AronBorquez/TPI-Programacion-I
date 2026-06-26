@@ -94,6 +94,99 @@ def actualizar():
     if encontrado == False:
          print("No se encontro ese pais")
 pass    
+def buscar_pais():
+    nombre_buscar = input("Ingrese el nombre del pais que desea buscar: ")
+    while nombre_buscar == "":
+        print("Ingrese un nombre valido")
+        nombre_buscar = input("Ingrese el nombre del pais que desea buscar: ") 
+    encontrado = False
+    for pais in paises:
+        if pais["nombre"].lower() == nombre_buscar.lower():  
+             encontrado = True 
+             print(f'El pais {pais["nombre"]} tiene una poblacion de {pais["poblacion"]}\nuna superficie de {pais["superficie"]} y pertenece al continente de {pais["continente"]}')
+    if encontrado == False:
+         print("El pais no existe en la lista")  
+pass   
+def filtrar_cont():
+    fil_cont = input("Ingrese el continente que desea filtrar ")
+    while fil_cont == "":
+        print("Ingrese un nombre valido")  
+        fil_cont = input("Ingrese el continente que desea filtrar ") 
+    con_enco = False
+    print(f"Los paises de {fil_cont} son:")   
+    for pais in paises:
+        if pais["continente"].lower() == fil_cont.lower():
+            print(pais["nombre"])
+            con_enco = True   
+    if con_enco == False:
+         print("El Continente no existe")           
+pass 
+def filtrar_pobla():
+    while True:
+        try:    
+            fil_pobla1 = int(input("Ingrese la poblacion minima: "))
+            if fil_pobla1 < 0:
+                print("El numero no puede ser negativo")
+            else:
+                break    
+        except ValueError:
+            print("Debe ingresar un numero entero")
+    while True:
+        try:    
+            fil_pobla2 = int(input("Ingrese la poblacion maxima: "))
+            if fil_pobla2 < 0:
+                print("El numero no puede ser negativo")
+            else:
+                break    
+        except ValueError:
+            print("Debe ingresar un numero entero") 
+    if fil_pobla1 > fil_pobla2:
+        print("La población mínima no puede ser mayor que la máxima.")
+        return     
+    encontrar_pobla = False   
+    for pais in paises:
+        if pais["poblacion"] >= fil_pobla1 and pais["poblacion"] <= fil_pobla2:
+            print(f'{pais["nombre"]} su poblacion es de {pais["poblacion"]}')
+            encontrar_pobla = True
+    if encontrar_pobla == False:
+        print("No se encontraron paises en ese rango de poblaciones")        
+pass  
+def filtrar_super():
+    while True:
+        try:    
+            fil_super = int(input("Ingrese la superficie minima: "))
+            if fil_super < 0:
+                print("El numero no puede ser negativo")
+            else:
+                break    
+        except ValueError:
+            print("Debe ingresar un numero entero")
+    while True:
+        try:    
+            fil_super2 = int(input("Ingrese la superficie maxima: "))
+            if fil_super2 < 0:
+                print("El numero no puede ser negativo")
+            else:
+                break    
+        except ValueError:
+            print("Debe ingresar un numero entero") 
+    if fil_super > fil_super2:
+        print("La superficie mínima no puede ser mayor que la máxima.")
+        return 
+    encontrar_super = False
+    for pais in paises:
+        if pais["superficie"] >= fil_super and pais["poblacion"] <= fil_super2:
+            print(f'{pais["nombre"]} su poblacion es de {pais["poblacion"]}')
+            encontrar_super = True
+    if encontrar_super == False:
+        print("No se encontraron paises en ese rango de superficies") 
+pass
+                   
+          
+          
+                    
+        
+
 paises = cargar_paises()
 
 menu = 0
@@ -102,7 +195,7 @@ while menu != 7:
     if menu == 1:
         agregar_pais(paises)
     elif menu == 2:
-        pass
+        actualizar(paises)
     elif menu == 3:
         pass
     elif menu == 4:

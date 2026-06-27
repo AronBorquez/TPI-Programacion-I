@@ -259,7 +259,7 @@ def mostrar_paises_cont(paises):
         if pais["continente"].lower()=="antartida":
             antartida+=1
     print(f"Paises por continentes:\nAmerica:{america}\nAfrica:{africa}\nAsia:{asia}\nEuropa:{europa}\nOceania:{oceania}\nAntartida:{antartida}")      
- def guardar_paises(paises):
+def guardar_paises(paises):
     with open("Paises.csv", "w", newline="", encoding="utf-8") as archivo:
         escritor = csv.writer(archivo)
         escritor.writerow(["nombre", "poblacion", "superficie", "continente"])

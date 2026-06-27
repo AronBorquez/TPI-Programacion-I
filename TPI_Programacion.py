@@ -151,7 +151,7 @@ def filtrar_pobla(paises):
             encontrar_pobla = True
     if encontrar_pobla == False:
         print("No se encontraron paises en ese rango de poblaciones")        
-pass  
+        
 def filtrar_super(paises):
     while True:
         try:    
@@ -259,7 +259,18 @@ def mostrar_paises_cont(paises):
         if pais["continente"].lower()=="antartida":
             antartida+=1
     print(f"Paises por continentes:\nAmerica:{america}\nAfrica:{africa}\nAsia:{asia}\nEuropa:{europa}\nOceania:{oceania}\nAntartida:{antartida}")      
-                    
+ def guardar_paises(paises):
+    with open("Paises.csv", "w", newline="", encoding="utf-8") as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow(["nombre", "poblacion", "superficie", "continente"])
+        for pais in paises:
+            escritor.writerow([
+                pais["nombre"],
+                pais["poblacion"],
+                pais["superficie"],
+                pais["continente"]
+            ])                
+                   
         
 
 paises = cargar_paises()
@@ -307,6 +318,7 @@ while menu != 7:
             print("Hasta luego vuelva pronto!!")
         else:
             print("Opcion invalida, ingrese otra opcion")
+        guardar_paises(paises)    
     except ValueError:
         print("Error. Debe ingresar un numero")
 

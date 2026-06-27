@@ -182,9 +182,46 @@ def filtrar_super(paises):
     if encontrar_super == False:
         print("No se encontraron paises en ese rango de superficies") 
 
-                   
-          
-          
+def mostrar_estadiscas(paises):
+    mayor= paises[0]
+    menor= paises[0]
+    total_pobla=0
+    total_super=0
+    for pais in paises:
+        if pais["poblacion"]>=mayor["poblacion"]:
+            mayor= pais
+        elif pais["poblacion"]<menor["poblacion"]:
+            menor= pais
+        total_pobla+=pais["poblacion"]
+        total_super+=pais["superficie"]
+        
+    promedio_pobla= total_pobla/len(paises)
+    promedio_super= total_super/len(paises)
+    print("-----ESTADISTICAS-----")
+    print(f"Pais con mayor poblacion {mayor["nombre"]}: {mayor["poblacion"]} habitante\nPais con menor poblacion {menor["nombre"]}: {menor["poblacion"]} habitantes")
+    print(f"Promedio de poblacion total: {promedio_pobla:.2f} habitantes\nPromedio de superficie total: {promedio_super:.2f} km2 ")   
+
+def mostrar_paises_cont(paises):
+    america=0
+    africa=0
+    asia=0
+    europa=0
+    oceania=0
+    antartida=0
+    for pais in paises:
+        if pais["continente"].lower()=="america":
+            america+=1
+        if pais["continente"].lower()=="africa":
+            africa+=1
+        if pais["continente"].lower()=="asia":
+            asia+=1
+        if pais["continente"].lower()=="europa":
+            europa+=1
+        if pais["continente"].lower()=="oceania":
+            oceania+=1
+        if pais["continente"].lower()=="antartida":
+            antartida+=1
+    print(f"Paises por continentes:\nAmerica:{america}\nAfrica:{africa}\nAsia:{asia}\nEuropa:{europa}\nOceania:{oceania}\nAntartida:{antartida}")      
                     
         
 
@@ -193,7 +230,7 @@ lista_continentes=["america","africa","antartida","europa","asia","oceania"]
 menu = 0
 while menu != 7:
     try:
-        menu = int(input("~~~ Bienvenidos a PaisPedia ~~~\n1)Agregar un Pais \n2)Actualizar los datos de poblacion y superficie \n3)Buscar un pais por nombre \n4)Filtrar paises por... \n5)Ordenar paises por... \n6)Mostras estadisticas de.. \n7)Salir"))
+        menu = int(input("\n~~~ Bienvenidos a PaisPedia ~~~\n1)Agregar un Pais \n2)Actualizar los datos de poblacion y superficie \n3)Buscar un pais por nombre \n4)Filtrar paises por... \n5)Ordenar paises por... \n6)Mostras estadisticas \n7)Salir"))
         if menu == 1:
             agregar_pais(paises)
         elif menu == 2:
@@ -216,7 +253,8 @@ while menu != 7:
         elif menu == 5:
             pass
         elif menu == 6:
-            pass
+            mostrar_estadiscas(paises)
+            mostrar_paises_cont(paises)
         elif menu == 7: 
             print("Hasta luego vuelva pronto!!")
         else:

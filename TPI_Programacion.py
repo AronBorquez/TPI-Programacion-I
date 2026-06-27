@@ -181,9 +181,44 @@ def filtrar_super(paises):
             encontrar_super = True
     if encontrar_super == False:
         print("No se encontraron paises en ese rango de superficies") 
+def ord_nombre(paises):
+    cantidad_elementos = len(paises)  
+    for indice_pasada in range(cantidad_elementos - 1):  
+        intercambio = False 
+        for indice_actual in range(cantidad_elementos - 1 - indice_pasada ):
+            if paises[indice_actual]["nombre"] > paises[indice_actual + 1]["nombre"]:   
+                paises[indice_actual], paises[indice_actual + 1] = paises[indice_actual + 1], paises[indice_actual]
+                intercambio = True
+        if intercambio == False:
+            break        
+    for pais in paises:
+        print(f'{pais["nombre"]} - {pais["poblacion"]} habitantes')                  
+def ord_poblacion(paises):
+    cantidad_elementos = len(paises)  
+    for indice_pasada in range(cantidad_elementos - 1):  
+        intercambio = False 
+        for indice_actual in range(cantidad_elementos - 1 - indice_pasada ):
+            if paises[indice_actual]["poblacion"] > paises[indice_actual + 1]["poblacion"]:   
+                paises[indice_actual], paises[indice_actual + 1] = paises[indice_actual + 1], paises[indice_actual]
+                intercambio = True
+        if intercambio == False:
+            break        
+    for pais in paises:
+        print(f'habitantes {pais["poblacion"]} - {pais["nombre"]}')   
+def ord_superficie(paises):
+    cantidad_elementos = len(paises)  
+    for indice_pasada in range(cantidad_elementos - 1):  
+        intercambio = False 
+        for indice_actual in range(cantidad_elementos - 1 - indice_pasada ):
+            if paises[indice_actual]["superficie"] > paises[indice_actual + 1]["superficie"]:   
+                paises[indice_actual], paises[indice_actual + 1] = paises[indice_actual + 1], paises[indice_actual]
+                intercambio = True
+        if intercambio == False:
+            break        
+    for pais in paises:
+        print(f'superficie {pais["superficie"]} - {pais["nombre"]}') 
 
-                   
-          
+
           
                     
         
@@ -214,7 +249,18 @@ while menu != 7:
             except ValueError:
                 print("Error. Debe ingresar un numero entero")
         elif menu == 5:
-            pass
+            try:
+                opcion= int(input("1-Ordenar por nombre\n2-Ordenar por poblacion\n3-Ordenar por superficie"))
+                if opcion == 1:
+                    ord_nombre(paises)
+                elif opcion == 2:
+                    ord_poblacion(paises)
+                elif opcion == 3:
+                    ord_superficie(paises) 
+                else:
+                    print("Error. No ingreso ninguna opcion posible")
+            except ValueError:
+                print("Error. Debe ingresar un numero entero")
         elif menu == 6:
             pass
         elif menu == 7: 

@@ -122,7 +122,7 @@ En caso de producirse un error de ingreso, el sistema muestra un mensaje descrip
 
 ## Video demostrativo
 
- Enlace al video:
+ Enlace al video: https://www.youtube.com/watch?v=GAI-RrFhgrM
 
 
 

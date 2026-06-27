@@ -50,7 +50,7 @@ def agregar_pais(paises):
                     except ValueError:
                         print("Debe ingresar un numero entero o decimal")
 
-                continente = input('Ingrese el continente al que pertenece: ')  
+                continente = input('Ingrese el continente al que pertenece: ').lower()  
                 while continente =="" or continente not in lista_continentes :
                     print("Ingrese un continente valido")
                     continente = input('Ingrese el continente al que pertenece: ')
